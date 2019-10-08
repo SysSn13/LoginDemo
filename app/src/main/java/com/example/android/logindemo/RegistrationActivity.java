@@ -3,6 +3,7 @@ package com.example.android.logindemo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private TextView UserLogin;
     private EditText ConfirmUserPassword ;
     private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -34,24 +36,32 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
         setupUIViews() ;
         firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
         RegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(validate()){
                     //Upload data to the database
+                    progressDialog.setMessage("Creating new Account");
+                    progressDialog.show();
                     String user_email = UserEmail.getText().toString().trim();
                     String user_password = UserPassword.getText().toString().trim();
                     firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
+                                progressDialog.dismiss();
                                 Toast.makeText(RegistrationActivity.this,"Registered successfully",Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegistrationActivity.this,MainActivity.class ));
                             }
-                            else   Toast.makeText(RegistrationActivity.this,"Registration failed!! ",Toast.LENGTH_SHORT).show();
+                            else  {
+                                progressDialog.dismiss();
+                                Toast.makeText(RegistrationActivity.this,"Registration failed!! ",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
+                    
                 }
             }
         });
