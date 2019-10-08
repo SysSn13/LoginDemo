@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "91321064797",
+    "firebase_url": "https://login-demo-sudesh.firebaseio.com",
+    "project_id": "login-demo-sudesh",
+    "storage_bucket": "login-demo-sudesh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91321064797:android:a3052b8556b0be71c65cb4",
+        "android_client_info": {
+          "package_name": "com.example.android.logindemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91321064797-li6isbilv9natcbifk8vtdhb77fcpohi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQFJ8RxJ_lH4spGGSbytA5MYEKULgdQbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91321064797-li6isbilv9natcbifk8vtdhb77fcpohi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
